@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Horcado</title>
+    <link rel="stylesheet" href="src/Assets/style/style.css" />
+    <link rel="stylesheet" href="src/Assets/Color/style.css" />
+    <link rel="icon" type="icon" href="muerte.png" />
+  </head>
+  <body>
+    <!-- Visualización de la palabra -->
+    <div class="word-display" id="word-display"></div>
+
+    <!-- Input para ingresar las letras -->
+    <div class="word-display">
+      <input type="text" id="guessInput" class="letter-input" maxlength="1" />
+    </div>
+
+    <div class="under-box"></div>
+    <script type="module" src="src/Components/Main/Main.mjs"></script>
+    <script type="module" src="src/Service/Game.js"></script>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+:root {
+  --back: linear-gradient(rgb(228, 189, 131), rgb(0, 0, 0));
+  --brown-primary-color: #654321;
+  --color-white: white;
+  --color-black: #000;
+
+  --text-correct: #00ff00;
+  --text-incorrect: #ff0000;
+  --back-modal: #0f0f0f;
+
+  --glow-color: #654321;
+  --glow-spread-color: #92704e;
+  --enhanced-glow-color: #cc9a68;
+  --btn-color: #a07a53;
+}

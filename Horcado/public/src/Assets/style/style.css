@@ -1,0 +1,276 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: var(--back);
+  font-family: Arial, sans-serif;
+  flex-direction: column;
+}
+
+.hangman-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 20px;
+}
+
+.hangman-part {
+  position: absolute;
+  background-color: var(--color-white);
+  display: none;
+}
+
+#gallows {
+  height: 10px;
+  width: 200px;
+  background-color: var(--glow-color);
+  left: 50px;
+  top: 0;
+  display: block;
+}
+
+#vertical-beam {
+  height: 300px;
+  width: 10px;
+  background-color: var(--glow-color);
+  left: 50px;
+  display: block;
+}
+
+#horizontal-beam {
+  height: 10px;
+  width: 150px;
+  background-color: var(--glow-color);
+  left: 50px;
+  top: 0;
+  display: block;
+}
+
+#rope {
+  height: 30px;
+  width: 5px;
+  background-color: var(--color-white);
+  left: 190px;
+  top: 10px;
+}
+
+#head {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 5px solid var(--color-white);
+  left: 170px;
+  top: 40px;
+}
+
+#body {
+  width: 5px;
+  height: 80px;
+  background-color: var(--color-white);
+  left: 190px;
+  top: 85px;
+}
+
+#left-arm {
+  width: 50px;
+  height: 5px;
+  transform: rotate(30deg);
+  left: 150px;
+  top: 100px;
+}
+
+#right-arm {
+  width: 50px;
+  height: 5px;
+  transform: rotate(-30deg);
+  left: 190px;
+  top: 100px;
+}
+
+#left-leg {
+  width: 50px;
+  height: 5px;
+  transform: rotate(30deg);
+  left: 150px;
+  top: 160px;
+}
+
+#right-leg {
+  width: 50px;
+  height: 5px;
+  transform: rotate(-30deg);
+  left: 190px;
+  top: 160px;
+}
+
+.word-display {
+  display: flex;
+  gap: 10px;
+  margin: 20px;
+}
+
+.letter-input {
+  width: 30px;
+  height: 40px;
+  text-align: center;
+  font-size: 24px;
+  color: var(--color-white);
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid var(--color-white);
+  text-transform: uppercase;
+}
+
+.letter-input.correct {
+  border-bottom-color: var(--text-correct);
+  color: var(--text-correct);
+}
+
+.letter-input.incorrect {
+  animation: shake 0.5s, redFlash 1s;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
+}
+
+@keyframes redFlash {
+  0% {
+    border-bottom-color: var(--text-incorrect);
+  }
+  100% {
+    border-bottom-color: var(--color-white);
+  }
+}
+
+/* Estilos para los modales */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--back-modal);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  gap: 20px;
+}
+.modal-content {
+  background: var(--back-modal);
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  max-width: 300px;
+  width: 90%;
+  gap: 20px;
+  color: var(--color-white);
+  border: none;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.glowbutton {
+  border: 0.25em solid var(--glow-color);
+  padding: 1em 3em;
+  margin: 10px;
+  color: var(--glow-color);
+  font-size: 15px;
+  font-weight: bold;
+  background-color: var(--btn-color);
+  border-radius: 1em;
+  outline: none;
+  box-shadow: 0 0 1em 0.25em var(--glow-color),
+    0 0 4em 1em var(--glow-spread-color),
+    inset 0 0 0.75em 0.25em var(--glow-color);
+  text-shadow: 0 0 0.5em var(--glow-color);
+  position: relative;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.glowbutton::after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 120%;
+  left: 0;
+  height: 30%;
+  width: 30%;
+  background-color: var(--glow-spread-color);
+  filter: blur(2em);
+  opacity: 0.7;
+  transform: perspective(1.5em) rotateX(35deg) scale(1, 0.6);
+}
+
+.glowbutton:hover {
+  color: var(--btn-color);
+  background-color: var(--glow-color);
+  box-shadow: 0 0 1em 0.25em var(--glow-color),
+    0 0 4em 2em var(--glow-spread-color),
+    inset 0 0 0.75em 0.25em var(--glow-color);
+}
+
+.glowbutton:active {
+  box-shadow: 0 0 0.6em 0.25em var(--glow-color),
+    0 0 2.5em 2em var(--glow-spread-color),
+    inset 0 0 0.5em 0.25em var(--glow-color);
+}
+
+.modal-content input[type="text"] {
+  padding: 10px;
+  margin: 10px;
+  width: 80%;
+  margin-bottom: 10px;
+  color: var(--color-white);
+  border-radius: 5px;
+  border: none;
+  background-color: var(--color-back);
+}
+
+.under-box {
+  background-color: var(--glow-color);
+  width: 30%;
+  height: 15%;
+  display: flex;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
