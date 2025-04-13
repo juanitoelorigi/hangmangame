@@ -1,6 +1,6 @@
 # web hangman game
 
-
+<img src="img/template.png">
 
 ---
 
